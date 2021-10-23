@@ -1,5 +1,5 @@
 import {CityType} from "../02/02_02";
-import {addMoneyToBudget, creatMessage, repairHouse, toFireStaff, toHireStaff} from "./03";
+import {buildingsWithCorrectStuffCount, demolishHouses} from "./04_02";
 
 let city: CityType;
 
@@ -8,6 +8,7 @@ beforeEach(() => {
         title: 'New York',
         houses: [
             {
+                id: 1,
                 builtAt: 2012,
                 repaired: false,
                 address: {
@@ -16,6 +17,7 @@ beforeEach(() => {
                 }
             },
             {
+                id: 2,
                 builtAt: 2008,
                 repaired: false,
                 address: {
@@ -24,6 +26,7 @@ beforeEach(() => {
                 }
             },
             {
+                id: 3,
                 builtAt: 2020,
                 repaired: false,
                 address: {
@@ -51,33 +54,16 @@ beforeEach(() => {
     }
 })
 
-test.skip('Budget should be changed for HOSPITAL', () => {
-    expect(city.governmentBuildings[0].budget).toBe(200000)
-    addMoneyToBudget(city.governmentBuildings[0], 100000);
-    expect(city.governmentBuildings[0].budget).toBe(300000)
+test.skip('Houses should be destroyed', () => {
+    const newHouses = demolishHouses(city, 'Happy street')
+
+    expect(newHouses.length).toBe(1);
+    expect(newHouses[0].id).toBe(1)
 })
 
-test.skip('Budget should be changed for FIRE-STATION', () => {
-    expect(city.governmentBuildings[1].budget).toBe(500000)
-    addMoneyToBudget(city.governmentBuildings[1], -100000);
-    expect(city.governmentBuildings[1].budget).toBe(400000)
-})
+test.skip('buildings with correct stuff cont more than 500', () => {
+    const buildings = buildingsWithCorrectStuffCount(city, 500);
 
-test.skip('House should be repaired', () => {
-    repairHouse(city.houses[0], true);
-    expect(city.houses[0].repaired).toBe(true);
-})
-
-test.skip('Staff should be decreased', () => {
-    toFireStaff(city.governmentBuildings[0], 20);
-    expect(city.governmentBuildings[0].stuffCount).toBe(180);
-})
-
-test.skip('Staff should be increased', () => {
-    toHireStaff(city.governmentBuildings[0], 20);
-    expect(city.governmentBuildings[0].stuffCount).toBe(220);
-})
-
-test.skip('Greeting message should be correct for city', () => {
-    expect(creatMessage(city.title)).toBe('Hello New York citizen')
+    expect(buildings.length).toBe(1);
+    expect(buildings[0].type).toBe('FIRE-STATION');
 })
