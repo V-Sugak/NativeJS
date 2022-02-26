@@ -1,5 +1,5 @@
 const axios = {};
-const findUserIndB = (id) => {
+export const findUserIndB = (id) => {
 };
 
 //pending
