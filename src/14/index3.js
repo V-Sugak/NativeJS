@@ -29,4 +29,5 @@ const getVacanciesCountFromGoogl = () => {
         .then(response => response.data)
         .then(data => data.vacancies)
 }
-getVacanciesCountFromGoogl().then(vacancies => console.log(vacancies))
+
+getVacanciesCountFromGoogl().then(count => console.log(count))
