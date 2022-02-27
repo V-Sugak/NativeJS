@@ -53,3 +53,21 @@ findUserIndB(1)
     .then(friend1 => friend1)
     .then(friend1 => findUserIndB(friend1.friend))
     .then(friend2 => console.log(friend2))
+
+
+/////    async\await
+
+async function run() {
+    let user = await findUserIndB(1);
+    console.log(user.name);
+    let friend1 = await findUserIndB(user.friend);
+    console.log(friend1.name);
+    let friend2 = await findUserIndB(friend1.friend);
+    console.log(friend2.name);
+};
+
+run();
+
+
+
+
