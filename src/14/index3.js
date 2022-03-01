@@ -1,4 +1,4 @@
-import {findUserIndB} from "./index";
+import {findUserIndB} from "./global";
 
 /*
 const promise2 = findUserIndB(1);

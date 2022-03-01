@@ -1,6 +1,4 @@
-const axios = {};
-export const findUserIndB = (id) => {
-};
+import {axios, findUserIndB} from "./global";
 
 //pending
 const promise1 = axios.get('google.com')

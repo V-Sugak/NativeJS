@@ -1,5 +1,4 @@
-import {findUserIndB} from "./index";
-import {log} from "util";
+import {findUserIndB} from "./global";
 
 findUserIndB(1)
     .then(user => user.name)
