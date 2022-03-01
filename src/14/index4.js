@@ -65,7 +65,7 @@ async function run() {
     console.log(friend2.name);
 };
 
-run();
+
 
 
 
