@@ -26,9 +26,6 @@ axios.get()
     .then(message => message)
 
 
-
-
-
 const a = {
     sum(a, b) {
         console.log(a + b)
@@ -57,3 +54,4 @@ b.sum(9)
     .sum(5)
     .minus(7)
 console.log(b.result)
+

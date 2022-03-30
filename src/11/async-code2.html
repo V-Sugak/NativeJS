@@ -1,0 +1,68 @@
+<script>
+    let fetch = (url) => {
+        return new Promise((resolve, reject) => {
+            switch (url) {
+                case 'google': {
+                    setTimeout(() => {   ///XMLHttpRequest
+                        resolve({data: 'from google'})
+                    }, 3000)
+                    break;
+                }
+                case 'microsoft': {
+                    setTimeout(() => {
+                        resolve({data: 'from microsoft'})
+                    }, 1000)
+                    break;
+                }
+                case 'it-kamasutra': {
+                    setTimeout(() => {
+                        resolve({data: 'from it-kamasutra'})
+                    }, 500)
+                    break;
+                }
+                default: {
+                    setTimeout(() => {
+                        resolve({data: 'from unknown resource'})
+                    }, 400)
+                }
+            }
+        })
+    }
+
+    /*  fetch('google').then(data => console.log(data))
+      fetch('microsoft').then(data => console.log(data))
+      fetch('it-kamasutra').then(data => console.log(data))
+  */
+
+    const makeRequest = () => {
+        fetch('google')
+            .then(data => {
+                console.log(data)
+                return fetch('microsoft')
+            })
+            .then(data => {
+                console.log(data)
+                return fetch('it-kamasutra')
+            })
+            .then(data => console.log(data))
+    }
+
+    const makeRequest2 = async () => {
+        let data = await fetch('google');
+        console.log(data)
+        data = await fetch('microsoft')
+        console.log(data)
+        data = await fetch('it-kamasutra')
+        console.log(data)
+    }
+
+    const makeRequestAtTheSameTime = async () => {
+        let promises = [fetch('google'), fetch('microsoft'), fetch('it-kamasutra')]
+
+        const data = await Promise.all(promises)
+        console.log(data)
+    }
+
+    makeRequestAtTheSameTime();
+
+</script>
